@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
+@config "../../tailwind.config.ts";
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-cyan: hsl(180, 66%, 49%);
+  --color-cyan-light: hsl(180, 66%, 69%);
+  --color-dark-violet: hsl(257, 27%, 26%);
+  --color-red: hsl(0, 87%, 67%);
+  --color-grayish-violet: hsl(257, 7%, 63%);
+  --color-very-dark-blue: hsl(255, 11%, 22%);
+  --color-very-dark-violet: hsl(260, 8%, 14%);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins-sans), sans-serif;
+}
+
+#cta {
+  background-image: url("/images/bg-boost-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ficon:hover {
+  filter: invert(79%) sepia(61%) saturate(464%) hue-rotate(130deg)
+    brightness(89%) contrast(85%);
+}
+
+@layer components {
+  .hamburger {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: all 0.25s;
+    position: relative;
+  }
+
+  .hamburger-bottom,
+  .hamburger-middle,
+  .hamburger-top {
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    top: 0;
+    left: 0;
+    background: #9c9aa6;
+    transform: rotate(0);
+    transition: all 0.5s;
+  }
+  .hamburger-middle {
+    transform: translateY(7px);
+  }
+  .hamburger-bottom {
+    transform: translateY(14px);
+  }
+  .open {
+    transform: rotate(90deg);
+  }
+  .open .hamburger-top {
+    transform: rotate(45deg) translateY(6px) translateX(6px);
+  }
+  .open .hamburger-middle {
+    display: none;
+  }
+  .open .hamburger-bottom {
+    transform: rotate(-45deg) translateY(6px) translateX(-6px);
+  }
 }
